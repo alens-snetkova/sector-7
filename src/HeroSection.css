@@ -1,0 +1,176 @@
+html, body {
+  margin: 0;
+  padding: 0;
+  width: 100%;
+  overflow-x: hidden; /* Убираем только горизонтальный скролл */
+}
+
+#root {
+  width: 100%;
+}
+html { font-size: 14px; }
+
+/* Подключаем шрифты (можно заменить на свои файлы, если они локальные) */
+@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@400&family=Space+Mono&display=swap');
+
+/* Главный контейнер */
+.hero {
+  width: 100%;
+  height: 100vh; /* Ровно один экран */
+  background-color: #0C1115;
+  color: #ffffff;
+  padding: 1.25rem;
+  box-sizing: border-box;
+  font-family: 'Roboto', sans-serif;
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+  overflow: hidden;
+}
+/* Верхняя полоса PROJECT NAME */
+.project-name {
+  border: 2px solid #A442FF;
+  color: transparent;
+  -webkit-text-stroke: 1px #A442FF;
+  text-align: center;
+  padding: 2.5rem 1.25rem;
+  font-family: 'Comma', sans-serif;
+  font-size: clamp(1.5rem, 4vw + 1rem, 3rem);
+  letter-spacing: 0.25rem;
+  text-transform: uppercase;
+}
+
+/* Сетка для трех колонок */
+.hero-content {
+  display: grid;
+  grid-template-columns: 1fr 2fr 1fr;
+  gap: 1.5rem;
+  flex: 1; /* Занимает всё оставшееся место */
+  min-height: 0;
+}
+
+.left-nav, .right-nav {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+  height: 100%;
+}
+
+.nav-btn {
+  background: transparent;
+  border: 2px solid #47C3DF;
+  color: transparent;
+  -webkit-text-stroke: 1px #47C3DF;
+  padding: 0.5rem 1rem;
+  font-family: 'Comma', sans-serif;
+  font-size: 2rem;
+  letter-spacing: 0.1rem;
+  cursor: pointer;
+  text-transform: uppercase;
+  transition: all 0.3s ease;
+  opacity: 0.8;
+  flex: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 0;
+}
+
+.nav-btn:hover {
+  opacity: 1;
+}
+
+/* Центр с кроссовком */
+.shoe-container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+  /* Убираем border-radius: 50% — он обрезал свечение */
+  overflow: visible; /* Разрешаем свечению выходить за пределы */
+}
+
+.shoe-container::before {
+  content: '';
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  
+  /* Делаем свечение намного больше */
+  width: 60%; 
+  height: 60%;
+  
+  /* Твой градиент */
+  background: radial-gradient(circle, #FFFFFF 0%, #47C3DF 50%, #04C4AF 100%);
+  
+  /* Усиливаем блюр — было 40px, ставим 80px для мягкости */
+  filter: blur(70px); 
+  opacity: 0.8;
+  z-index: 0;
+}
+
+
+.shoe-image {
+  position: relative;
+  z-index: 1;
+  max-width: 70%;
+  height: auto;
+  min-width: 230px;
+  transform: translateY(-20px);
+}
+
+/* === МОБИЛЬНАЯ ВЕРСИЯ === */
+@media (max-width: 809px) {
+  .hero {
+    padding: 1rem;
+    gap: 1rem;
+    }
+
+  .project-name {
+    font-size: 2rem;
+    padding: 1rem;
+    letter-spacing: 0.2rem;
+  }
+
+  .hero-content {
+    grid-template-columns: 1fr;
+    gap: 1rem;
+    min-height: auto; /* На мобильном убираем фиксированную высоту */
+  }
+
+  .left-nav, .right-nav {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 1rem;
+    height: auto; /* На мобильном высота авто */
+  }
+
+  .nav-btn {
+    padding: 1rem 0.75rem;
+    font-size: 1.5rem;
+    line-height: 1.2;
+    opacity: 1;
+    flex: none; /* На мобильном убираем растягивание */
+    min-height: 80px; /* Минимальная высота для удобства нажатия */
+  }
+
+  .nav-btn.full-width {
+    grid-column: 1 / -1;
+  }
+
+  .shoe-container {
+    padding: 1rem 0;
+  }
+
+  .shoe-container::before {
+    /* На мобильном делаем свечение еще шире, чтобы оно красиво заполняло фон */
+    display: none;
+    }
+
+  .shoe-image {
+    max-width: 60%;
+    min-width: 180px;
+    transform: translateY(0) rotate(60deg);
+  }
+}

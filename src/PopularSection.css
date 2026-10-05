@@ -1,0 +1,247 @@
+
+/* общий контейнер */
+.popular-section {
+  width: 100%;
+  height: 100vh;
+  background-color: var(--color-bg);
+  color: var(--color-text);
+  padding: var(--spacing-sm); 
+  box-sizing: border-box;
+  font-family: var(--font-main);
+  display: grid;
+  grid-template-columns: 1fr 2fr;
+  gap: var(--spacing-md); 
+  overflow: hidden;
+}
+
+/* ЛЕВАЯ КОЛОНКА */
+.models-list {
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-md);
+  height: 100%;
+}
+
+.model-btn {
+  padding: var(--spacing-sm);
+  font-size: var(--text-display-md);
+  letter-spacing: var(--letter-spacing-display);
+  text-align: left;
+  flex: 1;
+  display: flex;
+  align-items: center;
+  margin: 0;
+}
+
+.back-btn {
+  text-align: center;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 0;
+  flex: 0.5;
+}
+
+/* ПРАВАЯ КОЛОНКА */
+.model-details {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 100%;
+  width: 100%;
+
+}
+
+.empty-state {
+  font-family: var(--font-display);
+  font-weight: 400;
+  font-size: var(--text-display-md);
+  letter-spacing: var(--letter-spacing-display);
+  color: var(--color-primary);
+  text-transform: uppercase;
+  margin: 0;
+  opacity: 0.6;
+  text-align: center;
+}
+
+.details-wrapper {
+  border: 2px solid var(--color-info);
+  width: 100%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  padding: var(--spacing-sm);
+  gap: var(--spacing-sm);
+  box-sizing: border-box;
+}
+
+/* Первая строка: название + цвет */
+.details-header {
+  text-align: center;
+  flex-shrink: 0;
+}
+
+.details-header h2 {
+  font-family: var(--font-display);
+  font-size: var(--text-display-md);
+  letter-spacing: var(--letter-spacing-display);
+  color: transparent;
+  -webkit-text-stroke: 1px var(--color-primary);
+  text-transform: uppercase;
+  margin: 0;
+}
+
+.details-header .color-name {
+  font-family: var(--font-main);
+  font-weight: 300;
+  font-size: var(--text-body-sm);
+  letter-spacing: var(--letter-spacing-display);
+  color: var(--color-primary);
+  text-transform: uppercase;
+  margin: 0;
+  opacity: 0.7;
+}
+
+/* Вторая строка: фото */
+.details-image {
+  flex: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 200px;
+}
+
+.details-image img {
+  max-width: 100%;
+  max-height: 100%;
+  object-fit: contain;
+}
+
+/* Третья строка: описание + цена/кнопка */
+.details-bottom {
+  display: grid;
+  grid-template-columns: 2fr 1fr;
+  gap: var(--spacing-md);
+  flex-shrink: 0;
+}
+
+.details-description {
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-sm);
+}
+
+.details-description p {
+  font-family: var(--font-main);
+  font-weight: 300;
+  font-size: var(--text-body);
+  line-height: var(--line-height-body);
+  letter-spacing: var(--letter-spacing-body);
+  color: var(--color-info);
+  text-align: left;
+  margin: 0;
+}
+
+.details-action {
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-sm);
+}
+
+.details-price {
+  flex: 1;
+  border: 2px solid var(--color-info);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 100px;
+}
+
+.details-price p {
+  font-family: var(--font-display);
+  font-size: var(--text-display-md);
+  letter-spacing: var(--letter-spacing-display);
+  color: transparent;
+  -webkit-text-stroke: 1px var(--color-info);
+  text-transform: uppercase;
+  margin: 0;
+}
+
+/* Кнопка BUY */
+.btn-buy {
+  /* Базовые стили уже есть в globals.css (.btn-buy), 
+     здесь оставляем только специфичные для этого блока */
+  padding: var(--spacing-sm);
+  text-align: center;
+}
+
+/* Mобильная версия */
+@media (max-width: 809px) {
+  .popular-section {
+    grid-template-columns: 1fr;
+    padding: var(--spacing-sm);
+    gap: var(--spacing-sm);
+    height: auto;
+    min-height: 100vh;
+    overflow: visible;
+  }
+
+  .models-list {
+    gap: var(--spacing-sm);
+    height: auto;
+  }
+
+  .model-btn {
+    padding: var(--spacing-sm) 0.75rem;
+    font-size: var(--text-display-md);
+    line-height: 1.2;
+    opacity: 1;
+    flex: none;
+    min-height: 80px;
+  }
+
+  .back-btn {
+    padding: var(--spacing-sm) 0.75rem;
+    min-height: 80px;
+    margin-top: var(--spacing-sm);
+  }
+
+  .model-details {
+    height: auto;
+    min-height: 60vh;
+  }
+
+  .details-wrapper {
+    width: 100%;
+    height: auto;
+    padding: var(--spacing-sm);
+    gap: var(--spacing-sm);
+  }
+
+  .details-header h2 {
+    font-size: var(--text-display-sm);
+  }
+
+  .details-image {
+    min-height: 200px;
+  }
+
+  .details-bottom {
+    grid-template-columns: 1fr;
+    gap: var(--spacing-sm);
+  }
+
+  .details-description p {
+    font-size: var(--text-body);
+  }
+
+  .details-price {
+    min-height: 80px;
+    
+  }
+
+  .btn-buy {
+    padding: var(--spacing-sm);
+    min-height: 80px;
+  }
+}
